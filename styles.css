@@ -1,0 +1,21 @@
+html{
+    background-color: #6bab90;
+}
+
+button{
+    border : 4px solid #5e4c5a ;
+    background-color: #e1f0c4;
+    padding: 30px;
+}
+
+.div{
+    margin: 20px;
+}
+
+h1{
+    text-align: center;
+}
+
+#name{
+    text-align: center;
+}
