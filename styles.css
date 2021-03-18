@@ -7,7 +7,7 @@ button{
     font-size:large;
     border : 3px solid #5e4c5a ;
     background-color: #e1f0c4;
-    padding: 40px;
+    padding: 20px;
     border-radius: 8px;
 }
 
@@ -34,7 +34,7 @@ header *{
 }
 
 header li {
-    margin: 22px;
+    margin: 18px;
 }
 
 header li a {
