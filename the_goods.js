@@ -38,9 +38,9 @@ function setup() {
       dir=true;
 
     if(dir)
-      amnt+=.03;
+      amnt+=.01;
     else  
-      amnt-=.03;
+      amnt-=.01;
 
     
 
@@ -97,7 +97,7 @@ function setup() {
 
   // A simple Particle class
 let Particle = function(position) {
-  this.acceleration = createVector(0, 0.02);
+  this.acceleration = createVector(0, 0.01);
   this.velocity = createVector(random(-2, 2), random(-1, 0));
   this.position = position.copy();
   this.lifespan = 600;
