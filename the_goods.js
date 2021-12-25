@@ -1,9 +1,11 @@
 let text;
 let tree;
-let R=0;
-let G=255;
-let B=0;
-let system
+let col1;
+let col2;
+let amnt=.05;
+let dir;  //used to know if amnt is counting up(true), or down(false)
+let show_col;
+let system;
 
 function preload(){
     text=loadModel('text.obj', true);
@@ -13,16 +15,38 @@ function preload(){
 function setup() {
     createCanvas(windowWidth, windowHeight, WEBGL);
     system = new ParticleSystem(createVector(width / 2, 50));
-  
+    dir=true;
+   
     
-   // frameRate(5);
-  
+   
+    let amnt=.05; 
   }
 
-  function draw(){
+  function draw(){  
+    //colorMode(RGB);
+
+    col1=color("red");
+    col2=color("green"); 
     orbitControl();
     rotateX(-PI/2);
-    background(100);
+    background('rgba(141,104,176,1)');
+
+
+    if(amnt>=1)
+      dir=false;
+    else if(amnt<=0)
+      dir=true;
+
+    if(dir)
+      amnt+=.03;
+    else  
+      amnt-=.03;
+
+    
+
+    //console.log(col1,col2);
+   // console.log((lerpColor(col1,col2,1)));
+
 
     push();
     rotateX(PI/2);
@@ -45,13 +69,16 @@ function setup() {
     system.run();
     pop();
     
+    console.log(amnt); 
     //normalMaterial(); // For effect
+    stroke(lerpColor(col1,col2,amnt));
+    strokeWeight(3);
     push()
     scale(1.5);
     noFill();
+ 
     
-    stroke(R,G,B);
-    strokeWeight(3);
+    
     translate(0,0,-150);
     model(text);
     pop();
@@ -63,16 +90,17 @@ function setup() {
     model(tree);
     pop();
 
+    
 
   }
 
 
   // A simple Particle class
 let Particle = function(position) {
-  this.acceleration = createVector(0, 0.03);
+  this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-2, 2), random(-1, 0));
   this.position = position.copy();
-  this.lifespan = 400;
+  this.lifespan = 600;
 };
 
 Particle.prototype.run = function() {
@@ -91,7 +119,7 @@ Particle.prototype.update = function(){
 Particle.prototype.display = function() {
   stroke(155, this.lifespan);
   strokeWeight(1);
-  fill(127, this.lifespan);
+  fill(255 , this.lifespan);
   ellipse(this.position.x, this.position.y, 6, 6);
 };
 
